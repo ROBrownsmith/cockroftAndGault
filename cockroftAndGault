@@ -1,0 +1,24 @@
+Function cockroftAndGault(age As Range, gender As Range, weightInKg As Range, sCrumolL As Range) As Double
+'check an up to date reference text to make sure the constants are correct.
+ 
+    Dim ageValue As Integer
+    Dim genderValue As String
+    Dim weightValue As Double
+    Dim sCrValue As Double
+    Dim constant As Double
+   
+    ageValue = age.Value
+    genderValue = gender.Value
+    weightValue = Val(weightInKg.Value)
+    sCrValue = Val(sCrumolL.Value)
+   
+    If Left(UCase(genderValue), 1) = "M" Then
+        constant = 1.23
+    ElseIf Left(UCase(genderValue), 1) = "F" Then
+        constant = 1.04
+    End If
+   
+   'units are commented out but can comment back in.
+    cockroftAndGault = Round(((140 - ageValue) * weightValue * constant) / sCrValue, 2) ' & " mL/min"
+       
+End Function
